@@ -4,12 +4,6 @@
   "description": "This is the student service that is responsible for handling all operations related to students",
   "main": "index.js",
 
-
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/usevilla-fis-2021-g4/servicio-estudiante.git"
-  },
-  "homepage": "https://github.com/usevilla-fis-2021-g4/servicio-estudiante",
   "scripts": {
     "prestart": "npm install",
     "start": "node index.js"
