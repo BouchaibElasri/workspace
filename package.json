@@ -7,9 +7,9 @@
 
   "repository": {
     "type": "git",
-    "url": "https://github.com/usevilla-fis-2021-g4/estudiantes-sevice.git"
+    "url": "https://github.com/usevilla-fis-2021-g4/servicio-estudiante.git"
   },
-  "homepage": "https://github.com/usevilla-fis-2021-g4/estudiantes-sevice",
+  "homepage": "https://github.com/usevilla-fis-2021-g4/servicio-estudiante",
   "scripts": {
     "prestart": "npm install",
     "start": "node index.js"
