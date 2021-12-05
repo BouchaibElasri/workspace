@@ -7,9 +7,9 @@
 
   "repository": {
     "type": "git",
-    "url": "https://github.com/usevilla-fis-2021-g4/servicio-estudiante.git"
+    "url": "https://github.com/usevilla-fis-2021-g4/servicio-estudiantes.git"
   },
-  "homepage": "https://github.com/usevilla-fis-2021-g4/servicio-estudiante",
+  "homepage": "https://github.com/usevilla-fis-2021-g4/servicio-estudiantes",
   "scripts": {
     "prestart": "npm install",
     "start": "node index.js"
@@ -17,7 +17,6 @@
   "keywords": [
     "swagger"
   ],
-  "author": "Asri",
   "license": "Unlicense",
   "private": true,
   "dependencies": {
