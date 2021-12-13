@@ -1,5 +1,5 @@
 apiVersion: v2
-name: servicio estudiantes
+name: contacts-backend
 description: microservicio estudiantes
 type: application
 version: 0.1.0
