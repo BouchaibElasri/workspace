@@ -21,6 +21,8 @@ spec:
       containers:
         - name: api
           image: {{ .Values.api.image }}:{{ .Values.tag }}
+          env:
+            - MONGO_URL: mongodb://okteto:okteto@mongodb/okteto
           ports:
             - name: http
               containerPort: 8080
