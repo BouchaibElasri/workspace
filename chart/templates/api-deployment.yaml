@@ -31,10 +31,10 @@ spec:
           readinessProbe:
             periodSeconds: 1
             httpGet:
-              path: /api/v1/contacts
+              path: /api/v1/students
               port: 8080
           livenessProbe:
             periodSeconds: 1
             httpGet:
-              path: /api/v1/contacts
+              path: /api/v1/students
               port: 8080
