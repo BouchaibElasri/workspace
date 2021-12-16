@@ -1,12 +1,13 @@
 FROM  node:16.9.1-alpine
 
-WORKDIR /app
-COPY package*.json ./
+WORKDIR /usr/src/app
+
+COPY package.json .
+COPY package-lock.json .
 
 RUN npm install
 
 COPY . .
+EXPOSE 8080
 
-COPY index.js .
-
-CMD [ "npm", "start" ]
+CMD npm start
