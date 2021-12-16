@@ -2,6 +2,7 @@
 
 const path = require('path');
 const http = require('http');
+var BASE_API_PATH = "/api/v1";
 
 const oas3Tools = require('oas3-tools');
 const serverPort = 8080;
@@ -30,6 +31,11 @@ db.mongoose
 const expressAppConfig = oas3Tools.expressAppConfig(path.join(__dirname, 'api/openapi.yaml'), options);
 const app = expressAppConfig.getApp();
 
+
+app.get(BASE_API_PATH + "/healthz", (req, res) => {
+    res.sendStatus(200);
+});
+
 // for testing
 module.exports = app
 
@@ -39,7 +45,4 @@ http.createServer(app).listen(serverPort, function () {
     console.log('Swagger-ui is available on http://localhost:%d/docs', serverPort);
 });
 
-app.get(path + "/healthz", (req, res) => {
-    res.sendStatus(200);
-});
 
