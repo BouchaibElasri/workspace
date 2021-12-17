@@ -1,5 +1,5 @@
 apiVersion: v2
-name: students
+name: student
 description: microservicio estudiantes
 type: application
 version: 0.1.0
