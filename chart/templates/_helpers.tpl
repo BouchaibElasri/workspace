@@ -2,14 +2,14 @@
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "student.chart" -}}
+{{- define "students.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" -}}
 {{- end -}}
 
 {{/*
 Common labels
 */}}
-{{- define "student.labels" -}}
+{{- define "students.labels" -}}
 helm.sh/chart: {{ include "students.chart" . }}
 app.kubernetes.io/managed-by: {{ .Release.Service }}
 app.kubernetes.io/instance: {{ .Release.Name }}

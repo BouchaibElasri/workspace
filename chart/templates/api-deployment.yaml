@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: api
   labels:
-    {{- include "student.labels" . | nindent 4 }}
+    {{- include "students.labels" . | nindent 4 }}
     app.kubernetes.io/component: api
 spec:
   replicas: {{ .Values.api.replicaCount }}
@@ -31,10 +31,10 @@ spec:
           readinessProbe:
             periodSeconds: 1
             httpGet:
-              path: /api/v1/student
+              path: /api/v1/students
               port: 8080
           livenessProbe:
             periodSeconds: 1
             httpGet:
-              path: /api/v1/student
+              path: /api/v1/students
               port: 8080
