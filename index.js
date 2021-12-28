@@ -32,8 +32,8 @@ const expressAppConfig = oas3Tools.expressAppConfig(path.join(__dirname, 'api/op
 const app = expressAppConfig.getApp();
 
 
-app.get(path+"/students", (req, res) => {
-    res.sendStatus(200);
+app.get(BASE_API_PATH+"/healthz", (request, response) => {
+    response.sendStatus(200);
 });
 
 // for testing
