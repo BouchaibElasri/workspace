@@ -2,7 +2,7 @@
 
 const path = require('path');
 const http = require('http');
-
+var BASE_API_PATH = "/api/v1";
 
 const oas3Tools = require('oas3-tools');
 const serverPort = 8080;
@@ -32,7 +32,7 @@ const expressAppConfig = oas3Tools.expressAppConfig(path.join(__dirname, 'api/op
 const app = expressAppConfig.getApp();
 
 
-app.get(path + "/students", (req, res) => {
+app.get(path+"/students", (req, res) => {
     res.sendStatus(200);
 });
 
