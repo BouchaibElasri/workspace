@@ -12,7 +12,7 @@ var writeJson = exports.writeJson = function(response, [arg1, arg2]) {
   var payload;
 
   if(arg1 && arg1 instanceof ResponsePayload) {
-    writeJson(response, arg1.payload, arg1.code);
+    writeJson(response, [arg1.payload, arg1.code]);
     return;
   }
 
@@ -35,6 +35,11 @@ var writeJson = exports.writeJson = function(response, [arg1, arg2]) {
     // if no response code given, we default to 200
     code = 200;
   }
+
+  if(typeof payload === 'string') {
+    payload = {payload:payload};
+  }
+
   if(typeof payload === 'object') {
     payload = JSON.stringify(payload, null, 2);
   }

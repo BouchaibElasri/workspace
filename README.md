@@ -26,7 +26,7 @@ docker build -t student-service .
 To start the docker container, run:
 
 ```
-docker run -d --restart "always" -p 8080:8080 -e MONGO_URL="mongodb://<YOUR HOSTNAME>:27017/studentdb" -e SUBJECT_SERVICE_URL="http://localhost:8081/api/v1/subjects" --name student-service student-service:latest 
+docker run -d --restart "always" -p 8080:8080 -e MONGO_URL="mongodb://<YOUR HOSTNAME>:27017/studentdb" -e AUTHENTICATION_SERVICE_URL="http://localhost:8083/api/v1/verify" -e SUBJECT_SERVICE_URL="http://localhost:8081/api/v1/subjects" --name student-service student-service:latest 
 ```
 
 
@@ -34,4 +34,14 @@ To view the Swagger UI interface:
 
 ```
 open http://localhost:8080/docs
+```
+
+### Okteto
+Update the chart/values.yaml env variables with the namespace for your Okteto cluster e.g replace [YOUR NAMESPACE] with your namespace
+
+```
+env:
+MONGO_URL: mongodb://mongodb.[YOUR NAMESPACE].svc.cluster.local:27017/studentdb
+AUTHENTICATION_SERVICE_URL: https://authentication-service-[YOUR NAMESPACE].cloud.okteto.net/api/v1/verify
+SUBJECT_SERVICE_URL: https://subject-service-[YOUR NAMESPACE].cloud.okteto.net/api/v1/subjects
 ```

@@ -3,8 +3,6 @@
   "version": "1.0.0",
   "description": "This is the student service that is responsible for handling all operations related to students",
   "main": "index.js",
-
-
   "repository": {
     "type": "git",
     "url": "https://github.com/usevilla-fis-2021-g4/servicio-estudiantes.git"

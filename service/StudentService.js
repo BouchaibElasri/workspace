@@ -14,18 +14,14 @@ const servicesConfig = require('../config/servicesConfig');
 exports.assignGradesToStudent = function(body,studentId) {
   return new Promise(async function(resolve, reject) {
      try {
-         console.log('about to assign grades');
           let student = await db.Student.findOne({id: studentId}).exec();
 
-          console.log('student ', student);
               if (!student) {
                   reject([null, 400]);
               }
               else {
 
                   let grades = student.grades;
-                  console.log('grades ', grades);
-                  console.log('body ', body);
                   for (const gradeAssign of body) {
                       const grade = {
                           subjectCode: gradeAssign.subjectCode,
@@ -34,14 +30,11 @@ exports.assignGradesToStudent = function(body,studentId) {
                           grade: gradeAssign.grade
                       };
 
-                      console.log('about to find out if grade exists');
                       if (-1 === grades.findIndex(grade => grade.subjectCode === gradeAssign.subjectCode)) {
                           grades.push(grade);
-                          console.log('didnt so added it');
                       } else {
                           grades = grades.filter(grade => grade.subjectCode !== gradeAssign.subjectCode);
                           grades.push(grade);
-                          console.log('yes it did so removed it');
                       }
                   }
 
@@ -59,7 +52,7 @@ exports.assignGradesToStudent = function(body,studentId) {
               }
           }
           catch (error) {
-         console.log('error = ', error);
+         console.error('error = ', error);
               reject([error, 500]);
           }
       });
@@ -341,7 +334,6 @@ exports.getSubjectForStudent = function(studentId,subjectCode) {
             else {
                 let subject = student.subjects.filter(subject => subject.code === subjectCode);
 
-                console.log('found subject', subject);
                 if (subject) {
                     resolve([subject, 200]);
                 }
@@ -494,6 +486,17 @@ exports.updateGradeForStudentSubject = function(body, studentId, subjectCode) {
         } catch (error) {
             reject([error, 500]);
         }
+    });
+}
+
+/**
+ * Gets health of the service
+ *
+ * no response value expected for this operation
+ **/
+exports.getHealth = function() {
+    return new Promise(function(resolve, reject) {
+        resolve();
     });
 }
 

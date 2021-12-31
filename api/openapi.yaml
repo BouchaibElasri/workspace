@@ -3,17 +3,32 @@ info:
   title: Student API
   version: 1.0.0
 servers:
-- url: /api/v1
+  - url: /api/v1
 tags:
-- name: student
-  description: Describes the endpoints for students
+  - name: student
+    description: Describes the endpoints for students
 paths:
   /students:
     get:
       tags:
-      - student
+        - student
       description: Gets students
       operationId: getStudents
+      parameters:
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
       responses:
         "200":
           description: Student exists response
@@ -69,9 +84,24 @@ paths:
       x-swagger-router-controller: StudentController
     post:
       tags:
-      - student
+        - student
       description: Creates a studeånt
       operationId: createStudent
+      parameters:
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
       requestBody:
         description: "Create student: student ID, name, teacher ID"
         content:
@@ -131,19 +161,33 @@ paths:
   /students/{studentId}:
     get:
       tags:
-      - student
+        - student
       description: Gets a specific student
       operationId: getStudent
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
       responses:
         "200":
           description: Student found
@@ -196,19 +240,33 @@ paths:
       x-swagger-router-controller: StudentController
     put:
       tags:
-      - student
+        - student
       description: Updates a specific student
       operationId: updateStudent
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
       requestBody:
         description: Update a student
         content:
@@ -267,19 +325,33 @@ paths:
       x-swagger-router-controller: StudentController
     delete:
       tags:
-      - student
+        - student
       description: Deletes a specific student
       operationId: deleteStudent
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
       responses:
         "200":
           description: Student deleted
@@ -333,19 +405,33 @@ paths:
   /students/{studentId}/subjects:
     post:
       tags:
-      - student
+        - student
       description: Assign a subject to a student
       operationId: assignSubjectToStudent
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
       requestBody:
         description: "Assign subjects to the student: identification, subject code,\
           \ teacher identification "
@@ -409,27 +495,41 @@ paths:
   /students/{studentId}/subjects/{subjectCode}:
     get:
       tags:
-      - student
+        - student
       description: Gets a specific subject for a student
       operationId: getSubjectForStudent
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
-      - name: subjectCode
-        in: path
-        description: The code of the subject
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: subjectCode
+          in: path
+          description: The code of the subject
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: Subject found
@@ -482,27 +582,41 @@ paths:
       x-swagger-router-controller: StudentController
     put:
       tags:
-      - student
+        - student
       description: Updates a specific subject assignment for a student
       operationId: updateSubjectAssignmentForStudent
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
-      - name: subjectCode
-        in: path
-        description: The code of the subject
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: subjectCode
+          in: path
+          description: The code of the subject
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         description: Update a subject assignment
         content:
@@ -561,27 +675,41 @@ paths:
       x-swagger-router-controller: StudentController
     delete:
       tags:
-      - student
+        - student
       description: Deletes a subject assignment for a specific student
       operationId: deleteASubjectForStudent
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
-      - name: subjectCode
-        in: path
-        description: The code of the subject
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: subjectCode
+          in: path
+          description: The code of the subject
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: Student deleted
@@ -635,19 +763,33 @@ paths:
   /students/{studentId}/grades:
     post:
       tags:
-      - student
+        - student
       description: Assign grades to a student
       operationId: assignGradesToStudent
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
       requestBody:
         description: "Assign grades: student ID, subject code, grade, teacher ID"
         content:
@@ -710,27 +852,41 @@ paths:
   /students/{studentId}/grades/{subjectCode}:
     get:
       tags:
-      - student
+        - student
       description: returns a grade the student has for assigned subject
       operationId: getGradeForStudentSubject
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
-      - name: subjectCode
-        in: path
-        description: The code of the subject
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: subjectCode
+          in: path
+          description: The code of the subject
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: 200 response
@@ -786,27 +942,41 @@ paths:
       x-swagger-router-controller: StudentController
     put:
       tags:
-      - student
+        - student
       description: updates a grade the student has for assigned subject
       operationId: updatesGradeForStudentSubject
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
-      - name: subjectCode
-        in: path
-        description: The code of the subject
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: subjectCode
+          in: path
+          description: The code of the subject
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       requestBody:
         description: Update a grade
         content:
@@ -868,27 +1038,41 @@ paths:
       x-swagger-router-controller: StudentController
     delete:
       tags:
-      - student
+        - student
       description: deletes a grade the student has for assigned subject
       operationId: deleteGradeForStudentSubject
       parameters:
-      - name: studentId
-        in: path
-        description: The ID of the student
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: integer
-          format: int64
-      - name: subjectCode
-        in: path
-        description: The code of the subject
-        required: true
-        style: simple
-        explode: false
-        schema:
-          type: string
+        - name: X-User-Id
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xUserId'
+        - name: X-Auth-Token
+          in: header
+          required: true
+          style: simple
+          explode: false
+          schema:
+            $ref: '#/components/headers/xAuthToken'
+        - name: studentId
+          in: path
+          description: The ID of the student
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: integer
+            format: int64
+        - name: subjectCode
+          in: path
+          description: The code of the subject
+          required: true
+          style: simple
+          explode: false
+          schema:
+            type: string
       responses:
         "200":
           description: 200 response
@@ -942,15 +1126,41 @@ paths:
                 type: object
                 x-content-type: application/json
       x-swagger-router-controller: StudentController
+  /health:
+    get:
+      tags:
+        - student
+      description: Gets health of the service
+      operationId: getHealth
+      responses:
+        "200":
+          description: Service Health
+          headers:
+            Access-Control-Allow-Origin:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Content-Disposition:
+              style: simple
+              explode: false
+              schema:
+                type: string
+            Content-Type:
+              style: simple
+              explode: false
+              schema:
+                type: string
+      x-swagger-router-controller: StudentController
 components:
   schemas:
     Student:
       required:
-      - age
-      - firstName
-      - id
-      - lastName
-      - teacherId
+        - age
+        - firstName
+        - id
+        - lastName
+        - teacherId
       type: object
       properties:
         id:
@@ -979,27 +1189,27 @@ components:
         lastName: lastName
         teacherId: 1
         subjects:
-        - code: code
-          teacherId: 5
-          description: description
-        - code: code
-          teacherId: 5
-          description: description
+          - code: code
+            teacherId: 5
+            description: description
+          - code: code
+            teacherId: 5
+            description: description
         id: 0
         grades:
-        - studentId: 5
-          teacherId: 2
-          grade: grade
-          subjectCode: subjectCode
-        - studentId: 5
-          teacherId: 2
-          grade: grade
-          subjectCode: subjectCode
+          - studentId: 5
+            teacherId: 2
+            grade: grade
+            subjectCode: subjectCode
+          - studentId: 5
+            teacherId: 2
+            grade: grade
+            subjectCode: subjectCode
         age: 16
     Subject:
       required:
-      - code
-      - teacherId
+        - code
+        - teacherId
       type: object
       properties:
         code:
@@ -1015,9 +1225,9 @@ components:
         description: description
     SubjectAssignment:
       required:
-      - code
-      - studentId
-      - teacherId
+        - code
+        - studentId
+        - teacherId
       type: object
       properties:
         code:
@@ -1030,10 +1240,10 @@ components:
           format: int64
     Grade:
       required:
-      - grade
-      - studentId
-      - subjectCode
-      - teacherId
+        - grade
+        - studentId
+        - subjectCode
+        - teacherId
       type: object
       properties:
         studentId:
@@ -1051,3 +1261,16 @@ components:
         teacherId: 2
         grade: grade
         subjectCode: subjectCode
+  headers:
+    xUserId:
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: user id e.g. email address
+    xAuthToken:
+      style: simple
+      explode: false
+      schema:
+        type: string
+        description: authentication token obtained from the authentication service
